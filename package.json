@@ -1,0 +1,19 @@
+{
+  "name": "kijani-private-dummy-vercel-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal dummy-data staging: 468 private owner previews plus interactive, answer-derived customer journey and private demo records",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node dev-server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "issue-access": "node scripts/issue_access.mjs"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.2",
+    "pdf-lib": "1.17.1"
+  }
+}

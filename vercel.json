@@ -1,0 +1,32 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": null,
+  "outputDirectory": "public",
+  "functions": {
+    "api/index.mjs": {
+      "includeFiles": "data/**/*",
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {"source": "/", "destination": "/api/index?route="},
+    {"source": "/health", "destination": "/api/index?route=health"},
+    {"source": "/studio", "destination": "/api/index?route=studio"},
+    {"source": "/studio/:action", "destination": "/api/index?route=studio/:action"},
+    {"source": "/preview/:slug", "destination": "/api/index?route=preview/:slug"},
+    {"source": "/preview/:slug/:action", "destination": "/api/index?route=preview/:slug/:action"},
+    {"source": "/journey/:slug", "destination": "/api/index?route=journey/:slug"},
+    {"source": "/media/:name", "destination": "/api/index?route=media/:name"},
+    {"source": "/api/demo/:slug/finish", "destination": "/api/index?route=api/demo/:slug/finish"},
+    {"source": "/api/demo/:slug/:id/:action", "destination": "/api/index?route=api/demo/:slug/:id/:action"}
+  ],
+  "headers": [
+    {"source": "/assets/(.*)", "headers": [
+      {"key": "X-Robots-Tag", "value": "noindex, nofollow"},
+      {"key": "Cache-Control", "value": "private, no-store, max-age=0"},
+      {"key": "X-Content-Type-Options", "value": "nosniff"},
+      {"key": "Referrer-Policy", "value": "no-referrer"}
+    ]}
+  ]
+}
